@@ -5,27 +5,110 @@ from OpenGL.GL import *
 from glew_wish import *
 import glfw
 
+#def draw():
+    #glBegin(GL_TRIANGLES)
+    #glColor3f(1,0,0)
+    #glVertex3f(-1,0,0)
 
-def draw():
+    #glColor3f(0,1,0)
+    #glVertex3f(0,1,0)
+
+    #glColor3f(0,0,1)
+    #glVertex3f(0,0,1)
+
+    #glEnd()
+
+
+def draw_triangles():
     glBegin(GL_TRIANGLES)
-    glColor3f(1,0,0)
+
+    glColor3f(0.6,0.6,0)
     glVertex3f(-1,0,0)
-
-    glColor3f(0,1,0)
+    glColor3f(0,1,1)
     glVertex3f(0,1,0)
+    glColor3f(1,0,1)
+    glVertex3f(0.7,0.5,0)
+    glEnd()
 
-    glColor3f(0,0,1)
-    glVertex3f(0,0,1)
+def draw_point():
+    glBegin(GL_POINTS)
+    glColor3f(1.0,1.0,1.0)
+    glVertex(0,0,0)
+    glColor3f(1.0,1.0,1.0)
+    glVertex(-0.5,-0.5,0)
+    glEnd()
 
+def draw_lines():
+    glBegin(GL_LINES)
+    glColor3f(1.0,1.0,1.0)
+    glVertex3f(0.2,-0.8,0.0)
+    glVertex3f(0.8,-0.4,0.0)
+    glEnd()
 
+def draw_line_strip():
+    glBegin(GL_LINE_STRIP)
+    glColor3f(0.5,0.5,0.0)
+    glVertex3f(0.7,-0.5,0.0)
+    glVertex3f(0.9,-0.5,0.0)
+    glVertex3f(0.7,-0.7,0.0)
+    glVertex3f(0.9,-0.7,0.0)
+    glEnd()
 
+def draw_line_loop():
+    glBegin(GL_LINE_LOOP)
+    glColor3f(0.7,0.0,0.7)
+    glVertex3f(-0.6,0.5,0.0)
+    glVertex3f(-0.9,0.3,0.0)
+    glVertex3f(-0.7,0.6,0.0)
+    glEnd()
+
+def draw_triangle_strip():
+    glBegin(GL_TRIANGLE_STRIP)
+    glColor3f(0.7,0.0,0.7)
+    glVertex3f(-0.2,-0.8,0.0)
+    glColor3f(0.6,0.6,0.0)
+    glVertex3f(-0.6,-0.7,0.0)
+    glColor3f(0.5,0.4,0.9)
+    glVertex3f(-0.75,-0.3,0.0)
+    glColor3f(0.0,0.7,0.7)
+    glVertex3f(-0.9,-0.9,0.0)
+    glEnd()
+
+def draw_quads():
+    glBegin(GL_QUADS)
+    glColor3f(0.0,0.4,0.7)
+    glVertex3f(-0.2,-0.2,0.0)
+    glColor3f(0.5,0.4,0.9)
+    glVertex3f(0.2,0.2,0.0)
+    glColor3f(1.0,1.0,1.0)
+    glVertex3f(0.2,-0.2,0.0)
+    glColor3f(0.0,0.4,0.7)
+    glVertex3f(-0.2,0.2,0.0)
+    glEnd()
+
+def draw_polygon():
+    glBegin(GL_POLYGON)
+    glColor3f(0.0,0.4,0.7)
+    glVertex3f(0.0,0.0,1.0)
+    glColor3f(0.8,0.4,0.9)
+    glVertex3f(0.0,-0.4,0.0)
+    glColor3f(-1.0,1.0,1.0)
+    glVertex3f(1,-0.4,0.0)
+    glColor3f(0.0,0.4,0.7)
+    glVertex3f(1.0,-0.4,0.0)
+    glColor3f(0.0,-0.4,0.7)
+    glVertex3f(-0.3,0.1,0.0)
     glEnd()
 
 
 
-
 def main():
+
+    width = 700
+    height = 700
+
     #inicio
+
     if not glfw.init():
         return
 
@@ -66,7 +149,15 @@ def main():
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
         #dibujo............
-        draw()
+        #draw()
+        draw_triangles()
+        draw_point()
+        draw_lines()
+        draw_line_strip()
+        draw_line_loop()
+        draw_triangle_strip()
+        draw_quads()
+        draw_polygon()
 
         #polling
         glfw.poll_events()
