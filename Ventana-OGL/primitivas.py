@@ -150,14 +150,10 @@ def main():
 
         #dibujo............
         #draw()
-        draw_triangles()
-        draw_point()
         draw_lines()
-        draw_line_strip()
-        draw_line_loop()
-        draw_triangle_strip()
-        draw_quads()
-        draw_polygon()
+        #draw_line_strip()
+        #draw_line_loop()
+    
 
         #polling
         glfw.poll_events()

@@ -66,20 +66,28 @@ def sun():
         glVertex3f(0.25 * math.cos(angulo * math.pi / 180) -1, 0.25 * math.sin(angulo * math.pi / 180) + 0.5, 0)
     glEnd()
 
-def tree():
-    glBegin(GL_POLYGON)
-    glColor3f(0.6,0.7,0.2)
-    for angulo in range(0,359,5):
-        glVertex3f(0.3 * math.cos(angulo * math.pi / 180) -0.5, 0.3 * math.sin(angulo * math.pi / 180) + -0.2, 0)
+    glBegin(GL_LINES)
+    glColor3f(0.9,0.9,0.2)
+    glVertex3f(-0.8,0.3,0.0)
+    glVertex3f(-0.6,0.1,0.0)
     glEnd()
 
+def tree():
+
+    #hojas
     glBegin(GL_QUADS)
-    glColor3f(0.1,0.4,0.8)
+    glColor3f(0.3,0.1,0.1)
     glVertex3f(-0.6,-0.8,0.0)
     glVertex3f(-0.4,-0.8,0.0)
     glVertex3f(-0.4,-0.3,0.0)
     glVertex3f(-0.6,-0.3,0.0)
+    glEnd()
 
+    #tronco
+    glBegin(GL_POLYGON)
+    glColor3f(0.6,0.7,0.2)
+    for angulo in range(0,359,5):
+        glVertex3f(0.3 * math.cos(angulo * math.pi / 180) -0.5, 0.3 * math.sin(angulo * math.pi / 180) + -0.2, 0)
     glEnd()
 
 
@@ -95,12 +103,52 @@ def background():
 
     #ground
     glBegin(GL_QUADS)
-    glColor3f(0.6,0.3,0.3)
+    glColor3f(0.0,0.4,0.1)
     glVertex3f(-1.0,-1.0,0.0)
     glVertex3f(1.0,-1.0,0.0)
     glVertex3f(1.0,-0.7,0.0)
     glVertex3f(-1.0,-0.7,0.0)
     glEnd()
+
+
+def clouds():
+    glBegin(GL_POLYGON)
+    glColor3f(1,1,1)
+    for angulo in range(1,100,1):
+        glVertex3f(0.1 * math.cos(angulo * math.pi / 100),0.1 * math.sin(angulo * math.pi / 100) + 0.3, 0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    glColor3f(1,1,1)
+    for angulo in range(1,100,1):
+        glVertex3f(0.075 * math.cos(angulo * math.pi / 100) + -0.1,0.075 * math.sin(angulo * math.pi / 100) + 0.3, 0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    glColor3f(1,1,1)
+    for angulo in range(1,100,1):
+        glVertex3f(0.1 * math.cos(angulo * math.pi / 100) + -0.5,0.1 * math.sin(angulo * math.pi / 100) + 0.2, 0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    glColor3f(1,1,1)
+    for angulo in range(1,100,1):
+        glVertex3f(0.075 * math.cos(angulo * math.pi / 100) + -0.6,0.075 * math.sin(angulo * math.pi / 100) + 0.2, 0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    glColor3f(1,1,1)
+    for angulo in range(1,100,1):
+        glVertex3f(0.1 * math.cos(angulo * math.pi / 100),0.1 * math.sin(angulo * math.pi / 100) + -0.1, 0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    glColor3f(1,1,1)
+    for angulo in range(1,100,1):
+        glVertex3f(0.075 * math.cos(angulo * math.pi / 100) + -0.1,0.075 * math.sin(angulo * math.pi / 100) + -0.1, 0)
+    glEnd()
+
+
 
 def main():
 
@@ -155,6 +203,7 @@ def main():
         house()
         sun()
         tree()
+        clouds()
 
         #polling
         glfw.poll_events()
