@@ -78,19 +78,36 @@ write("pasa_bajas.wav", frecuencia_muestreo, pasa_bajas_data.astype(np.int16))
 
 
 #Detiene bandas(band stop)
-detiene_bandas=transformada.copy
+detiene_bandas=transformada.copy()
 indices=((frecuencias>500) &(frecuencias<800))
 detiene_bandas[indices]*=0
 detiene_bandas_data=np.fft.irfft(detiene_bandas)
 
 ejes[0,2].plot(tiempos, detiene_bandas_data, label="Audio con detiene bandas")
 ejes[0,2].legend()
-ejes[0,2].set(xlbael="Tiempo(s)", ylabel="Amplitud")
+ejes[0,2].set(xlabel="Tiempo(s)", ylabel="Amplitud")
 
 ejes[0,3].plot(frecuencias,np.abs(detiene_bandas), label="Espectro detiene bandas")
 ejes[0,3].legend()
 ejes[0,3].set(xlabel="Frecuencia(hz)", ylabel="Amplitud")
 
 write("detiene_bandas.wav", frecuencia_muestreo, detiene_bandas_data.astype(np.int16))
+
+
+#filtro
+pasa_altas = transformada.copy()
+pasa_altas[frecuencias < 600] *= 0
+
+ejes[1,3].plot(frecuencias, np.abs(pasa_altas), label = "Espectro filtrado, pasa altas")
+ejes[1,3].legend()
+ejes[1,3].set(xlabel="Frecuencia (Hz)", ylabel = "Amplitud")
+
+pasa_altas_data = np.fft.irfft(pasa_altas)
+
+ejes[0,3].plot(tiempos,pasa_altas_data, label="Audio con pasa altas")
+ejes[0,3].legend()
+ejes[0,3].set(xlabel="Tiempo (S)", ylabel="Amplitud")
+
+write("pasa_altas.wav", frecuencia_muestreo, pasa_altas_data.astype(np.int16))
 
 plt.show()
